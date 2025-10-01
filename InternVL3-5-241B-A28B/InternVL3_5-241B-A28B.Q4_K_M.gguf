@@ -1,0 +1,15 @@
+./llama-server \
+  --model /InternVL3-5-241B-A28B/InternVL3_5-241B-A28B.Q4_K_M.gguf \
+  --threads -1 \
+  --ctx-size 16384 \
+  --n-gpu-layers 99 \
+  -dev CUDA0,Vulkan0,Vulkan1 \
+  \
+  -ot "blk.[0-9]|1[0-9].attn_.*=CUDA0" \
+  -ot "blk.[0-9]|1[0-9]|2[0-9].ffn_.*=Vulkan0" \
+  -ot "blk.3[0-9]|4[0-9]|5[0-9]|6[0-9]|7[0-9]|8[0-9]|9[0-3].ffn_.*=Vulkan1" \
+  \
+  --temp 0.7 \
+  --top-p 0.9 \
+  --host 0.0.0.0 \
+  --port 8080
