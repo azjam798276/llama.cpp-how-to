@@ -13,3 +13,10 @@
   --top-p 0.9 \
   --host 0.0.0.0 \
   --port 8080
+//Layer Distribution: It divides the model's 94 layers among your devices to prevent out-of-memory errors on any single GPU.
+
+//RTX 3080 (CUDA0): Gets the attention layers for the first 20 layers. This is a realistic load for its 10GB VRAM.
+
+//RX 7900 XTX (Vulkan0): Handles the FFN/MoE layers for the first 30 layers, using its larger 24GB VRAM.
+
+//RX 7900 XT (Vulkan1): Takes the remaining FFN/MoE layers from layer 30 to 93, using its 20GB of VRAM.
