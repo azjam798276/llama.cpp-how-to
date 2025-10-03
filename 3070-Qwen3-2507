@@ -1,0 +1,31 @@
+/app/llama-server     --model /app/models/unsloth/Qwen3-30B-A3B-Thinking-2507-GGUF/Qwen3-30B-A3B-Thinking-2507-UD-Q4_K_XL.gguf     --host 0.0.0.0     --port 8080     --n-gpu-layers 99     --threads 16     --ctx-size 4096     --temp 0.6     --top-p 0.95     --min-p 0.0     --top-k 20     --n-cpu-moe 30
+
+
+
+/app/llama-server \
+    --model /app/models/unsloth/Qwen3-30B-A3B-Thinking-2507-GGUF/Qwen3-30B-A3B-Thinking-2507-UD-Q4_K_XL.gguf \
+    --host 0.0.0.0 \
+    --port 8080 \
+    -dev CUDA0
+    --n-gpu-layers 99 \
+    --threads 16 \
+    --ctx-size 4096 \
+    --temp 0.6 \
+    --top-p 0.95 \
+    --min-p 0.0 \
+    --top-k 20 \
+    --n-cpu-moe 30
+    
+// multi gpu config 3070, 7900xtx,7900xt
+/app/llama-server \
+    --model /app/models/unsloth/Qwen3-30B-A3B-Thinking-2507-GGUF/Qwen3-30B-A3B-Thinking-2507-UD-Q4_K_XL.gguf \
+    --host 0.0.0.0 \
+    --port 8080 \
+    -dev CUDA0,Vulkan0,Vulkan1 \
+    --n-gpu-layers 99 \
+    --threads 16 \
+    --ctx-size 4096 \
+    --temp 0.6 \
+    --top-p 0.95 \
+    --min-p 0.0 \
+    --top-k 20
